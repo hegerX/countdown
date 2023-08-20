@@ -1,6 +1,6 @@
 package com.heger.countdown.data;
 
-import com.heger.countdown.Constant;
+import com.heger.countdown.utils.Constant;
 
 public class TimerStatusBarData {
     private int second = 0;

@@ -1,6 +1,6 @@
 package com.heger.countdown.ui;
 
-import com.heger.countdown.PluginConstant;
+import com.heger.countdown.utils.PluginConstant;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.StatusBar;
 import com.intellij.openapi.wm.StatusBarWidget;

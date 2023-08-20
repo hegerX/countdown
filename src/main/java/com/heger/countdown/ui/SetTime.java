@@ -1,9 +1,9 @@
 package com.heger.countdown.ui;
 
-import com.heger.countdown.Constant;
+import com.heger.countdown.utils.Constant;
 import com.heger.countdown.data.CountDownData;
 import com.heger.countdown.service.TimeBarAnAction;
-import com.heger.countdown.TimeState;
+import com.heger.countdown.utils.TimeState;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -41,20 +41,18 @@ public class SetTime extends JDialog {
                     TimeBarAnAction.startIcon();
                     close();
                 } else if (startButton.getText().equals("开始") && Constant.COUNTDOWN_STATUS == TimeState.TIME_NOT_STARTED){
-                    if (checkLastRemainingNoteTimeMin(getLastRemainingNoteTimeMinJSpinnerValue(), getTimeLengthMinJTextFieldValue())) {
-                        if (checkRepetitionPeriodTimeMin(getRepetitionPeriodTimeMinJSpinnerValue(), getTimeLengthMinJTextFieldValue())) {
-                            if (checkAndTimeLengthMin(getTimeLengthMinJTextFieldValue())) {
-                                setTimeLengthMin();
-                                setRepetitionPeriodTimeMin();
-                                setLastRemainingNoteTimeMin();
-                                countDownData.setCountDownType();
-                                countDownData.startCountDown();
-                                // 修改TimeBarAnAction图片为启动状态
-                                Constant.COUNTDOWN_STATUS = TimeState.TIME_RUNNING;
-                                TimeBarAnAction.startIcon();
-                                close(); // 所有条件满足后才可以关闭窗口
-                            }
-                        }
+                    if (checkLastRemainingNoteTimeMin(getLastRemainingNoteTimeMinJSpinnerValue(), getTimeLengthMinJTextFieldValue())
+                            && checkRepetitionPeriodTimeMin(getRepetitionPeriodTimeMinJSpinnerValue(), getTimeLengthMinJTextFieldValue())
+                            && checkAndTimeLengthMin(getTimeLengthMinJTextFieldValue())) {
+                        setTimeLengthMin();
+                        setRepetitionPeriodTimeMin();
+                        setLastRemainingNoteTimeMin();
+                        countDownData.setCountDownType();
+                        countDownData.startCountDown();
+                        // 修改TimeBarAnAction图片为启动状态
+                        Constant.COUNTDOWN_STATUS = TimeState.TIME_RUNNING;
+                        TimeBarAnAction.startIcon();
+                        close(); // 所有条件满足后才可以关闭窗口
                     }
                 }
                 setStartButtonTextAndIsEditedStatusByStatus();

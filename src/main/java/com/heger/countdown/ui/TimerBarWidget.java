@@ -8,12 +8,13 @@ package com.heger.countdown.ui;
  * @date 2023-07-30 09:20
  **/
 
-import com.heger.countdown.Constant;
-import com.heger.countdown.PluginConstant;
-import com.heger.countdown.TimeState;
+import com.heger.countdown.utils.Constant;
+import com.heger.countdown.utils.PluginConstant;
+import com.heger.countdown.utils.TimeState;
 import com.heger.countdown.data.TimerStatusBarData;
 import com.heger.countdown.service.TimeBarAnAction;
-import com.intellij.notification.*;
+import com.heger.countdown.utils.CountdownNoticeDialog;
+import com.heger.countdown.utils.Notice;
 import com.intellij.openapi.wm.CustomStatusBarWidget;
 import com.intellij.openapi.wm.StatusBar;
 import org.jetbrains.annotations.NotNull;
@@ -28,13 +29,15 @@ import java.util.Objects;
 public class TimerBarWidget implements CustomStatusBarWidget {
 
     public final static String ID = PluginConstant.COUNTDOWN_TIMER_BAR_WIDGET;
-    private static Color Level1 = new Color(90, 190, 90);
-    private static Color Level2 = new Color(253, 180, 80);
-    private static Color Level3 = new Color(220, 78, 80);
+    private static final Color Level1 = new Color(90, 190, 90);
+    private static final Color Level2 = new Color(253, 180, 80);
+    private static final Color Level3 = new Color(220, 78, 80);
     public final TimerStatusBarData timerStatusBarData = new TimerStatusBarData();
     private String name = "";
-    private JLabel label = new JLabel(time());
-    private Timer timer = new Timer(1000, new AbstractAction() {
+
+    private final Notice notice = new CountdownNoticeDialog();
+    private final JLabel label = new JLabel(time());
+    private final Timer timer = new Timer(1000, new AbstractAction() {
         @Override
         public void actionPerformed(ActionEvent e) {
             int second1 = timerStatusBarData.getSecond();
@@ -66,26 +69,30 @@ public class TimerBarWidget implements CustomStatusBarWidget {
     }
 
     private void reckonByTime() {
+        int min = 0;
         if (timerStatusBarData.getTimeType().equals(Constant.UP_TIME)) {
             timerStatusBarData.setSecond(timerStatusBarData.getSecond() + 1);
+            min = (timerStatusBarData.getTimeLengthSec() - this.timerStatusBarData.getSecond()) / 60;
             UpTimeCharacterColor();
         } else {
             timerStatusBarData.setSecond(timerStatusBarData.getSecond() - 1);
+            min = this.timerStatusBarData.getSecond() / 60;
             DownTimeCharacterColor();
         }
         if (Objects.equals(this.timerStatusBarData.getLastRemainingNoteTimeSec(), this.timerStatusBarData.getSecond())) {
-            note(time());
+            notice.notice("剩余时间：" + min + "分", "最后提醒时间");
         }
         // 重复提醒处理逻辑
         if (this.timerStatusBarData.getRepetitionPeriodTimeSec() > 0
                 && (this.timerStatusBarData.getSecond() - this.timerStatusBarData.getTimeLengthSec())
                 % this.timerStatusBarData.getRepetitionPeriodTimeSec() == 0L) {
-            note(time());
+            notice.notice("剩余时间：" + min + "分", "重复提醒");
         }
     }
 
     private String time() {
-        return String.format("[%s]%02d:%02d:%02d", name, timerStatusBarData.getSecond() / 60 / 60, timerStatusBarData.getSecond() / 60 % 60, timerStatusBarData.getSecond() % 60);
+        return String.format("[%s]%02d:%02d:%02d", name, timerStatusBarData.getSecond() / 60 / 60,
+                timerStatusBarData.getSecond() / 60 % 60, timerStatusBarData.getSecond() % 60);
     }
 
     @Override
@@ -165,12 +172,6 @@ public class TimerBarWidget implements CustomStatusBarWidget {
 
     public int getLastRemainingNoteTimeSec() {
         return timerStatusBarData.getLastRemainingNoteTimeSec();
-    }
-
-    private void note(String time) {
-        NotificationGroup notificationGroup1 = new NotificationGroup("剩余时间", NotificationDisplayType.STICKY_BALLOON, true);
-        Notification notification1 = notificationGroup1.createNotification(time, NotificationType.ERROR);
-        Notifications.Bus.notify(notification1);
     }
 }
 

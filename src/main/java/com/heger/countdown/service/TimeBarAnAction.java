@@ -1,7 +1,7 @@
 package com.heger.countdown.service;
 
-import com.heger.countdown.ui.TimerBarWidget;
 import com.heger.countdown.ui.SetTime;
+import com.heger.countdown.ui.TimerBarWidget;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -21,8 +21,6 @@ import java.util.Objects;
  **/
 public class TimeBarAnAction extends AnAction {
 
-    private SetTime setTime;
-
     private static Presentation presentaion;
 
     @Override
@@ -31,7 +29,7 @@ public class TimeBarAnAction extends AnAction {
         Project project = e.getData(PlatformDataKeys.PROJECT);
         TimerBarWidget timerBarWidget = (TimerBarWidget) WindowManager.getInstance()
                 .getStatusBar(Objects.requireNonNull(e.getProject())).getWidget(TimerBarWidget.ID);
-        setTime = new SetTime(timerBarWidget);
+        SetTime setTime = new SetTime(timerBarWidget);
         // 居中操作
         setTime.setLocationRelativeTo(null);
         // 面板的大小自动适应

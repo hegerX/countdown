@@ -1,12 +1,1 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M32.0845 7.94025V4H24.0203V7.9896H16.029V4H7.91553V7.94025H4V36H16.0044V32.0045C16.0058 30.9457 16.4274 29.9308 17.1766 29.1826C17.9258 28.4345 18.9412 28.0143 20 28.0143C21.0588 28.0143 22.0743 28.4345 22.8234 29.1826C23.5726 29.9308 23.9942 30.9457 23.9956 32.0045V36H36V7.94025H32.0845Z"
-          fill="url(#paint0_linear)"/>
-    <defs>
-        <linearGradient id="paint0_linear" x1="2.94192" y1="4.89955" x2="37.7772" y2="39.7345"
-                        gradientUnits="userSpaceOnUse">
-            <stop offset="0.15937" stop-color="#3BEA62"/>
-            <stop offset="0.5404" stop-color="#3C99CC"/>
-            <stop offset="0.93739" stop-color="#6B57FF"/>
-        </linearGradient>
-    </defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40" fill="none"><g opacity="1"  transform="translate(0 0)  rotate(0)"><mask id="bg-mask-0" fill="white"><use transform="translate(0 0)  rotate(0)" xlink:href="#path_0"></use></mask><g mask="url(#bg-mask-0)" ><path id="路径 1" fill-rule="evenodd" fill="url(#linear_0)" opacity="1" d="M36.6632,9.53001l-2.14,2.54999l-7.66,-6.41999l2.15,-2.55zM13.1332,5.65001l-7.66,6.42999l-2.14,-2.54999l7.66,-6.43zM20.8332,13.33v8.75l6.67,3.95l-1.26,2.06l-7.91,-4.76v-10zM19.9932,6.67001c8.29,0 15.01,6.70999 15.01,14.99999c0,8.28 -6.72,15 -15.01,15c-8.29,0 -14.99,-6.72 -14.99,-15c0,-8.29 6.7,-14.99999 14.99,-14.99999zM31.6632,21.67c0,-6.44 -5.22,-11.67 -11.66,-11.67c-6.44,0 -11.67,5.22 -11.67,11.67c0,6.44 5.23,11.66 11.67,11.66c6.45,0 11.66,-5.22 11.66,-11.66z"></path></g></g><defs><rect id="path_0" x="0" y="0" width="40" height="40" /><linearGradient id="linear_0" x1="-25.589000000000002%" y1="55.774%" x2="100%" y2="55.774%" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#E61010" stop-opacity="1" /><stop offset="1" stop-color="#A7F500" stop-opacity="1" /></linearGradient></defs></svg>

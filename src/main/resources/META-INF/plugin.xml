@@ -5,15 +5,17 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>CountDown</name>
+    <name>MyCountdown</name>
 
+    <version>1.0</version>
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="heger.x@qq.com" url="https://www.yourcompany.com">heger.x</vendor>
-
+    <vendor email="heger.x@qq.com" url="https://github.com/hegerX/countdown">heger.x</vendor>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="213.3"/>
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
-    <description><![CDATA[老铁！让我们开始倒计时吧！！<br>]]></description>
+    <description><![CDATA[This is a plugin that supports automatic countdown. Welcome to try it out!<br>]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
